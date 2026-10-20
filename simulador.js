@@ -1,4 +1,75 @@
+function validarCampo(campo, etiquetaError) {
+    etiquetaError.textContent = "";
+
+    if (campo.validity.badInput) {
+        etiquetaError.textContent = "Ingresa un número válido.";
+        return false;
+    }
+
+    if (campo.validity.valueMissing) {
+        etiquetaError.textContent = "Este campo es obligatorio.";
+        return false;
+    }
+
+    if (campo.validity.rangeUnderflow) {
+        etiquetaError.textContent =
+            "El valor mínimo permitido es " + campo.min + ".";
+        return false;
+    }
+
+    if (campo.validity.rangeOverflow) {
+        etiquetaError.textContent =
+            "El valor máximo permitido es " + campo.max + ".";
+        return false;
+    }
+
+    if (campo.validity.stepMismatch) {
+        if (campo.step === "1") {
+            etiquetaError.textContent = "Ingresa un número entero.";
+        } else {
+            etiquetaError.textContent = "Ingresa máximo dos decimales.";
+        }
+        return false;
+    }
+
+    return true;
+}
+
+function validarFormulario() {
+    const campoIngresos = document.getElementById("txtIngresos");
+    const campoEgresos = document.getElementById("txtEgresos");
+    const campoMonto = document.getElementById("txtMonto");
+    const campoPlazo = document.getElementById("txtPlazo");
+    const campoTasaInteres = document.getElementById("txtTasaInteres");
+
+    const etiquetaErrorIngresos = document.getElementById("errIngresos");
+    const etiquetaErrorEgresos = document.getElementById("errEgresos");
+    const etiquetaErrorMonto = document.getElementById("errMonto");
+    const etiquetaErrorPlazo = document.getElementById("errPlazo");
+    const etiquetaErrorTasa = document.getElementById("errTasaInteres");
+
+    const ingresosValido =
+        validarCampo(campoIngresos, etiquetaErrorIngresos);
+    const egresosValido =
+        validarCampo(campoEgresos, etiquetaErrorEgresos);
+    const montoValido =
+        validarCampo(campoMonto, etiquetaErrorMonto);
+    const plazoValido =
+        validarCampo(campoPlazo, etiquetaErrorPlazo);
+    const tasaValida =
+        validarCampo(campoTasaInteres, etiquetaErrorTasa);
+
+    return ingresosValido && egresosValido && montoValido &&
+           plazoValido && tasaValida;
+}
+
+
+
 function calcular() {
+    if (!validarFormulario()) {
+        return;
+    }
+
     const campoIngresos = document.getElementById("txtIngresos");
     const campoEgresos = document.getElementById("txtEgresos");
     const campoMonto = document.getElementById("txtMonto");

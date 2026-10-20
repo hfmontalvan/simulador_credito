@@ -431,3 +431,10 @@ h1 {
         width: 100%;
     }
 }
+.mensaje-error {
+    display: block;
+    min-height: 1.2em;
+    margin-top: 0.25rem;
+    color: #b42318;
+    font-size: 0.85rem;
+}

@@ -58,20 +58,30 @@
                     </div>
 
                     <div class="field-grid">
-                        <div class="field">
+                                                
+                         <div class="field">
                             <label for="txtIngresos">
                                 Ingresos mensuales <span>USD</span>
                             </label>
-                            <input type="number" id="txtIngresos" min="0"
-                                   step="0.01" placeholder="Ej.: 1200.00">
-                        </div>
+                            <input type="number" id="txtIngresos"
+                                min="0" max="1000000" step="0.01"
+                                placeholder="Ej.: 2200.00" required
+                                aria-describedby="errIngresos">
+                            <span id="errIngresos" class="mensaje-error"
+                                aria-live="polite"></span>
+                        </div>   
+
 
                         <div class="field">
                             <label for="txtEgresos">
                                 Egresos mensuales <span>USD</span>
                             </label>
-                            <input type="number" id="txtEgresos" min="0"
-                                   step="0.01" placeholder="Ej.: 600.00">
+                            <input type="number" id="txtEgresos"
+                                min="0" max="1000000" step="0.01"
+                                placeholder="Ej.: 700.00" required
+                                aria-describedby="errEgresos">
+                            <span id="errEgresos" class="mensaje-error"
+                                aria-live="polite"></span>
                         </div>
                     </div>
 
@@ -86,29 +96,47 @@
                     </div>
 
                     <div class="field-grid">
+                        
                         <div class="field">
                             <label for="txtMonto">
                                 Monto solicitado <span>USD</span>
                             </label>
-                            <input type="number" id="txtMonto" min="0"
-                                   step="1" placeholder="Ej.: 2000">
-                        </div>
+                            <input type="number" id="txtMonto"
+                                min="100" max="50000" step="1"
+                                placeholder="Ej.: 2000" required
+                                aria-describedby="errMonto">
+                            <span id="errMonto" class="mensaje-error"
+                                aria-live="polite"></span>
+                        </div>    
+
 
                         <div class="field">
                             <label for="txtPlazo">
                                 Plazo en años <span>AÑOS</span>
                             </label>
-                            <input type="number" id="txtPlazo" min="1"
-                                   step="1" placeholder="Ej.: 1">
+                            <input type="number" id="txtPlazo"
+                                min="1" max="30" step="1"
+                                placeholder="Ej.: 1" required
+                                aria-describedby="errPlazo">
+                            <span id="errPlazo" class="mensaje-error"
+                                aria-live="polite"></span>
                         </div>
-
+                        
                         <div class="field field-full">
                             <label for="txtTasaInteres">
                                 Tasa de interés anual <span>%</span>
                             </label>
-                            <input type="number" id="txtTasaInteres" min="0"
-                                   step="1" placeholder="Ej.: 10">
-                        </div>
+                            <input type="number" id="txtTasaInteres"
+                                min="0" max="100" step="1"
+                                placeholder="Ej.: 10" required
+                                aria-describedby="errTasaInteres">
+                            <span id="errTasaInteres" class="mensaje-error"
+                                aria-live="polite"></span>
+                        </div>   
+
+
+
+
                     </div>
 
                     <div class="buttons">

@@ -1,0 +1,70 @@
+TALLER: SIMULADOR DE CRÉDITO
+PARTE 3: VALIDACIONES DEL FORMULARIO
+
+PROMPT 1: DEFINIR LAS REGLAS DE VALIDACIÓN
+
+Actúa como un desarrollador web que explica el código a una persona principiante.
+
+Estoy desarrollando un simulador de crédito educativo con HTML, CSS y JavaScript. Ayúdame a definir e implementar validaciones para estos campos:
+
+- Ingresos mensuales: obligatorio, numérico, desde USD 0 hasta USD 1.000.000, con máximo dos decimales.
+- Egresos mensuales: obligatorio, numérico, desde USD 0 hasta USD 1.000.000, con máximo dos decimales. Si los egresos superan los ingresos, se debe permitir el cálculo porque representa un déficit.
+- Monto solicitado: obligatorio, número entero desde USD 100 hasta USD 50.000.
+- Plazo: obligatorio, número entero desde 1 hasta 30 años.
+- Tasa de interés anual: obligatoria, número entero desde 0 % hasta 100 %.
+
+Estos límites son valores didácticos para el ejercicio, no representan políticas ni límites legales de una institución financiera.
+
+Los mensajes de error deben aparecer debajo del campo correspondiente cuando se presione el botón “Calcular crédito”. Si hay errores, no se deben ejecutar los cálculos. Si todos los campos son válidos, el simulador debe continuar con su funcionamiento actual.
+
+Antes de proponer cambios, respeta los identificadores que ya existen en el proyecto.
+
+
+PROMPT 2: PREPARAR EL HTML Y EL CSS
+
+Usa los archivos existentes simulador.html y simulador.css.
+
+En simulador.html, conserva el diseño, las etiquetas, las clases y los identificadores de los campos. Añade a los campos las restricciones required, min, max y step de acuerdo con las reglas definidas.
+
+Debajo de cada input, agrega un espacio para mostrar su error. Usa estos identificadores:
+
+- errIngresos
+- errEgresos
+- errMonto
+- errPlazo
+- errTasaInteres
+
+Asocia cada input con su mensaje mediante aria-describedby y agrega aria-live="polite" al espacio del error para facilitar su lectura con tecnologías de asistencia.
+
+En simulador.css, agrega estilos legibles y responsive para que cada mensaje de error aparezca debajo de su campo, con buen contraste y sin desordenar el formulario. Conserva el diseño corporativo existente.
+
+
+PROMPT 3: IMPLEMENTAR Y VERIFICAR LAS VALIDACIONES EN JAVASCRIPT
+
+Usa el archivo existente simulador.js para implementar las validaciones. Conserva las funciones de cálculo y sus fórmulas actuales en funciones.js.
+
+Los identificadores de los campos son:
+
+- txtIngresos
+- txtEgresos
+- txtMonto
+- txtPlazo
+- txtTasaInteres
+
+El botón que inicia el proceso tiene el identificador btnCalcularCredito. Los espacios para errores son errIngresos, errEgresos, errMonto, errPlazo y errTasaInteres.
+
+Crea una función que valide un campo y escriba su mensaje en el espacio correspondiente. Debe detectar campos vacíos, valores numéricos inválidos, valores menores o mayores que los límites y cantidades decimales no permitidas.
+
+Crea una función validarFormulario() que revise los cinco campos y muestre todos los errores encontrados en el mismo intento. Al comenzar cada validación, limpia los mensajes anteriores.
+
+Al inicio de calcular(), ejecuta validarFormulario(). Si algún campo no es válido, detén calcular() antes de llamar a las funciones de cálculo. Si todos son válidos, continúa con el código actual y muestra los resultados en las etiquetas existentes.
+
+No cambies los identificadores de resultados ni el diseño del formulario. Explica brevemente el orden de ejecución y la función de HTML, CSS, simulador.js y funciones.js.
+
+Verifica estos casos:
+
+1. Pulsar “Calcular crédito” con todos los campos vacíos debe mostrar un mensaje debajo de cada campo.
+2. Ingresar valores por debajo o por encima de los límites debe mostrar el error correspondiente.
+3. Ingresar decimales en los campos que requieren números enteros debe mostrar un error.
+4. Ingresar valores válidos debe ejecutar los cálculos y presentar los resultados.
+5. Si los egresos superan los ingresos, se debe realizar el cálculo y reflejar el resultado financiero.
