@@ -16,6 +16,7 @@ function calcular() {
     const interes = calcularInteresSimple(monto, tasa, plazoAnios);
     const totalPagar = calcularTotalPagar(monto, interes);
     const cuotaMensual = calcularCuotaMensual(totalPagar, plazoAnios);
+    const creditoAprobado = aprobarCredito(capacidadPago, cuotaMensual);
 
     const etiquetaDisponible = document.getElementById("spnDisponible");
     etiquetaDisponible.textContent = "USD " + disponible.toFixed(2);
@@ -31,6 +32,14 @@ function calcular() {
 
     const etiquetaCuotaMensual = document.getElementById("spnCuotaMensual");
     etiquetaCuotaMensual.textContent = "USD " + cuotaMensual.toFixed(2);
+
+    const etiquetaEstadoCredito = document.getElementById("spnEstadoCredito");
+
+    if (creditoAprobado) {
+        etiquetaEstadoCredito.textContent = "CRÉDITO APROBADO";
+    } else {
+        etiquetaEstadoCredito.textContent = "CRÉDITO RECHAZADO";
+    }
 }
 
 const botonCalcularCredito = document.getElementById("btnCalcularCredito");
