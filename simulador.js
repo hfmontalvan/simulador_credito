@@ -1,13 +1,19 @@
-//AQUI EL JAVASCRIPT PARA MANIPULAR EL HTML
 function calcular() {
-    const ingresos = parseFloat(document.getElementById("txtIngresos").value);
-    const egresos = parseFloat(document.getElementById("txtEgresos").value);
+    const campoIngresos = document.getElementById("txtIngresos");
+    const campoEgresos = document.getElementById("txtEgresos");
+
+    const ingresos = parseFloat(campoIngresos.value);
+    const egresos = parseFloat(campoEgresos.value);
 
     const disponible = calcularDisponible(ingresos, egresos);
+    const capacidadPago = calcularCapacidadPago(disponible);
 
-    document.getElementById("spnDisponible").textContent =
-        "USD " + disponible.toFixed(2);
+    const etiquetaDisponible = document.getElementById("spnDisponible");
+    etiquetaDisponible.textContent = "USD " + disponible.toFixed(2);
+
+    const etiquetaCapacidadPago = document.getElementById("spnCapacidadPago");
+    etiquetaCapacidadPago.textContent = "USD " + capacidadPago.toFixed(2);
 }
 
-document.getElementById("btnCalcularCredito")
-    .addEventListener("click", calcular);
+const botonCalcularCredito = document.getElementById("btnCalcularCredito");
+botonCalcularCredito.addEventListener("click", calcular);
