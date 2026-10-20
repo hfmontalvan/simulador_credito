@@ -3,45 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Crédito</title>
+    <title>Cooperativa Horizonte | Simulador de Crédito</title>
     <link rel="stylesheet" href="simulador.css">
 </head>
 <body>
+    <div class="page-shell">
+        <header class="brand-bar">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 48 48">
+                        <rect width="48" height="48" rx="15" fill="#123b59"></rect>
+                        <circle cx="24" cy="16" r="4" fill="#f2c76b"></circle>
+                        <path d="M13.5 29c2.8-6.2 6.4-9.3 10.5-9.3s7.7 3.1 10.5 9.3"
+                              fill="none" stroke="#56d6c3" stroke-width="3"
+                              stroke-linecap="round"></path>
+                        <path d="M12 32h24" fill="none" stroke="#56d6c3"
+                              stroke-width="3" stroke-linecap="round"></path>
+                    </svg>
+                </span>
+                <span class="brand-copy">
+                    <strong>Horizonte</strong>
+                    <small>Cooperativa Financiera</small>
+                </span>
+            </div>
 
-    <div class="container">
-        <h1>Simulador de Crédito</h1>
+            <span class="brand-note">Simulación referencial</span>
+        </header>
 
-        <h2>Datos financieros</h2>
-        <label for="txtIngresos">Ingresos:</label>
-        <input type="text" id="txtIngresos">
+        <main class="container">
+            <section class="hero">
+                <div>
+                    <p class="eyebrow">PLANIFICACIÓN FINANCIERA</p>
+                    <h1>Simulador de crédito</h1>
+                    <p class="hero-description">
+                        Revisa tu capacidad de pago y estima una cuota mensual
+                        antes de solicitar tu crédito.
+                    </p>
+                </div>
 
-        <label for="txtEgresos">Egresos:</label>
-        <input type="text" id="txtEgresos">
+                <div class="hero-chip">
+                    <span class="chip-dot"></span>
+                    Evaluación sencilla
+                </div>
+            </section>
 
-        <p>Disponible: <span id="spnDisponible"></span></p>
-        <p>Capacidad de pago mensual: <span id="spnCapacidadPago"></span></p>
+            <div class="simulator-grid">
+                <section class="card form-card">
+                    <div class="section-heading">
+                        <span class="section-number">01</span>
+                        <div>
+                            <h2>Datos financieros</h2>
+                            <p>Ingresa tus valores mensuales en dólares.</p>
+                        </div>
+                    </div>
 
-        <h2>Solicitud de crédito</h2>
-        <label for="txtMonto">Monto:</label>
-        <input type="text" id="txtMonto">
+                    <div class="field-grid">
+                        <div class="field">
+                            <label for="txtIngresos">
+                                Ingresos mensuales <span>USD</span>
+                            </label>
+                            <input type="number" id="txtIngresos" min="0"
+                                   step="0.01" placeholder="Ej.: 1200.00">
+                        </div>
 
-        <label for="txtPlazo">Plazo en años:</label>
-        <input type="text" id="txtPlazo">
+                        <div class="field">
+                            <label for="txtEgresos">
+                                Egresos mensuales <span>USD</span>
+                            </label>
+                            <input type="number" id="txtEgresos" min="0"
+                                   step="0.01" placeholder="Ej.: 600.00">
+                        </div>
+                    </div>
 
-        <label for="txtTasaInteres">Tasa de interés:</label>
-        <input type="text" id="txtTasaInteres">
+                    <div class="section-divider"></div>
 
-        <p>Interés a pagar: <span id="spnInteresPagar"></span></p>
-        <p>Total préstamo: <span id="spnTotalPrestamo"></span></p>
-        <p>Cuota mensual: <span id="spnCuotaMensual"></span></p>
-        <p>Estado de crédito: <span id="spnEstadoCredito">ANALIZANDO...</span></p>
+                    <div class="section-heading">
+                        <span class="section-number">02</span>
+                        <div>
+                            <h2>Solicitud de crédito</h2>
+                            <p>Completa las condiciones del crédito.</p>
+                        </div>
+                    </div>
 
-        <div class="buttons">
-            <button id="btnCalcularCredito">Calcular Crédito</button>
-            <button id="btnReiniciar">Reiniciar</button>
-        </div>
+                    <div class="field-grid">
+                        <div class="field">
+                            <label for="txtMonto">
+                                Monto solicitado <span>USD</span>
+                            </label>
+                            <input type="number" id="txtMonto" min="0"
+                                   step="1" placeholder="Ej.: 2000">
+                        </div>
+
+                        <div class="field">
+                            <label for="txtPlazo">
+                                Plazo en años <span>AÑOS</span>
+                            </label>
+                            <input type="number" id="txtPlazo" min="1"
+                                   step="1" placeholder="Ej.: 1">
+                        </div>
+
+                        <div class="field field-full">
+                            <label for="txtTasaInteres">
+                                Tasa de interés anual <span>%</span>
+                            </label>
+                            <input type="number" id="txtTasaInteres" min="0"
+                                   step="1" placeholder="Ej.: 10">
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <button type="button" id="btnCalcularCredito"
+                                class="button button-primary">
+                            Calcular crédito
+                        </button>
+                        <button type="button" id="btnReiniciar"
+                                class="button button-secondary">
+                            Reiniciar
+                        </button>
+                    </div>
+                </section>
+
+                <aside class="card results-card" aria-live="polite">
+                    <div class="results-heading">
+                        <div>
+                            <p class="eyebrow">RESUMEN</p>
+                            <h2>Resultado estimado</h2>
+                        </div>
+                        <span class="currency-tag">USD</span>
+                    </div>
+
+                    <div class="result-list">
+                        <div class="result-row">
+                            <span>Disponible mensual</span>
+                            <strong id="spnDisponible">—</strong>
+                        </div>
+
+                        <div class="result-row">
+                            <span>Capacidad de pago mensual</span>
+                            <strong id="spnCapacidadPago">—</strong>
+                        </div>
+
+                        <div class="result-row">
+                            <span>Interés a pagar</span>
+                            <strong id="spnInteresPagar">—</strong>
+                        </div>
+
+                        <div class="result-row">
+                            <span>Total del préstamo</span>
+                            <strong id="spnTotalPrestamo">—</strong>
+                        </div>
+
+                        <div class="result-row result-row-highlight">
+                            <span>Cuota mensual estimada</span>
+                            <strong id="spnCuotaMensual">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="approval-box">
+                        <span>Estado del crédito</span>
+                        <strong id="spnEstadoCredito" class="approval-state">
+                            Pendiente de cálculo
+                        </strong>
+                    </div>
+
+                    <p class="disclaimer">
+                        Este resultado es referencial. La aprobación definitiva
+                        depende de la evaluación de la cooperativa.
+                    </p>
+                </aside>
+            </div>
+
+            <footer class="page-footer">
+                Cooperativa Horizonte · Simulador educativo de crédito
+            </footer>
+        </main>
     </div>
-<script src="funciones.js"></script>
-<script src="simulador.js"></script>
+
+    <script src="funciones.js"></script>
+    <script src="simulador.js"></script>
 </body>
 </html>
