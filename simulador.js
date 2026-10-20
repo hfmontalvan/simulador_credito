@@ -26,7 +26,7 @@ function calcular() {
     etiquetaInteresPagar.textContent = "USD " + interes.toFixed(2);
 
     const etiquetaTotalPrestamo = document.getElementById("spnTotalPrestamo");
-etiquetaTotalPrestamo.textContent = "USD " + totalPagar.toFixed(2);
+    etiquetaTotalPrestamo.textContent = "USD " + totalPagar.toFixed(2);
 }
 
 const botonCalcularCredito = document.getElementById("btnCalcularCredito");
