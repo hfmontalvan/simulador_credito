@@ -15,6 +15,7 @@ function calcular() {
     const capacidadPago = calcularCapacidadPago(disponible);
     const interes = calcularInteresSimple(monto, tasa, plazoAnios);
     const totalPagar = calcularTotalPagar(monto, interes);
+    const cuotaMensual = calcularCuotaMensual(totalPagar, plazoAnios);
 
     const etiquetaDisponible = document.getElementById("spnDisponible");
     etiquetaDisponible.textContent = "USD " + disponible.toFixed(2);
@@ -27,6 +28,9 @@ function calcular() {
 
     const etiquetaTotalPrestamo = document.getElementById("spnTotalPrestamo");
     etiquetaTotalPrestamo.textContent = "USD " + totalPagar.toFixed(2);
+
+    const etiquetaCuotaMensual = document.getElementById("spnCuotaMensual");
+    etiquetaCuotaMensual.textContent = "USD " + cuotaMensual.toFixed(2);
 }
 
 const botonCalcularCredito = document.getElementById("btnCalcularCredito");
