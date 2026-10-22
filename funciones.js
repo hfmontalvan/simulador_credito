@@ -9,7 +9,7 @@ function calcularDisponible(ingresos, egresos) {
     return disponible;
 }
 function calcularCapacidadPago(montoDisponible) {
-    return montoDisponible * 0.5;
+    return montoDisponible * 0.3;
 }
 function calcularInteresSimple(monto, tasa, plazoAnios) {
     const interes = monto * (tasa / 100) * plazoAnios;
